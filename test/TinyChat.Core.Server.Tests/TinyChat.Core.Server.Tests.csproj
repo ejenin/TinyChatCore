@@ -4,11 +4,12 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{8ED8761D-7489-4110-B5BD-8246AFB63EDA}</ProjectGuid>
+        <ProjectGuid>{D0D89E81-94E7-4003-9418-77ACAF9455B2}</ProjectGuid>
+        <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>TinyChat.Core.Server</RootNamespace>
-        <AssemblyName>TinyChat.Core.Server</AssemblyName>
+        <RootNamespace>TinyChat.Core.Server.Tests</RootNamespace>
+        <AssemblyName>TinyChat.Core.Server.Tests</AssemblyName>
         <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
     </PropertyGroup>
@@ -36,19 +37,35 @@
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
         <Reference Include="System.Xml" />
+        <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c">
+            <HintPath>../..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
+        </Reference>
+        <Reference Include="xunit.assert, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c">
+            <HintPath>../..\packages\xunit.assert.2.1.0\lib\dotnet\xunit.assert.dll</HintPath>
+        </Reference>
+        <Reference Include="xunit.core, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c">
+            <HintPath>../..\packages\xunit.extensibility.core.2.1.0\lib\dotnet\xunit.core.dll</HintPath>
+        </Reference>
+        <Reference Include="xunit.execution.desktop, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c">
+            <HintPath>../..\packages\xunit.extensibility.execution.2.1.0\lib\net45\xunit.execution.desktop.dll</HintPath>
+        </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Interfaces\IChatServer.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="TinyChatServerTest.cs" />
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\TinyChat.Core.Client\TinyChat.Core.Client.csproj">
+      <ProjectReference Include="..\..\src\TinyChat.Core.Client\TinyChat.Core.Client.csproj">
         <Project>{4ad474da-4963-4234-9f18-c439da261ce3}</Project>
         <Name>TinyChat.Core.Client</Name>
       </ProjectReference>
-      <ProjectReference Include="..\TinyChat.Core.Domain\TinyChat.Core.Domain.csproj">
+      <ProjectReference Include="..\..\src\TinyChat.Core.Domain\TinyChat.Core.Domain.csproj">
         <Project>{674685b3-1ff1-49f5-a685-84bb5fbcf91d}</Project>
         <Name>TinyChat.Core.Domain</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\src\TinyChat.Core.Server\TinyChat.Core.Server.csproj">
+        <Project>{8ed8761d-7489-4110-b5bd-8246afb63eda}</Project>
+        <Name>TinyChat.Core.Server</Name>
       </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -59,5 +76,4 @@
     <Target Name="AfterBuild">
     </Target>
     -->
-
 </Project>

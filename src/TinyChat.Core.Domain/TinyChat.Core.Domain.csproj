@@ -38,6 +38,7 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Chat.cs" />
         <Compile Include="Interfaces\IChat.cs" />
         <Compile Include="Models\Message.cs" />
         <Compile Include="Models\Room.cs" />

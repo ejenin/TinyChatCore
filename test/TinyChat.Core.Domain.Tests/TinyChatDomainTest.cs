@@ -16,7 +16,7 @@ namespace TinyChat.Core.Domain.Tests
             var fakeUserName = "testUser";
             var fakeUserId = "testId";
             var fakeMessage = "testMessage";
-            var time = DateTime.Now;
+            var sendingTime = DateTime.Now.ToLongTimeString();
             
             chat.SendMessage(DEFAULT_ROOM, fakeMessage, fakeUserName, fakeUserId);
 
@@ -25,7 +25,9 @@ namespace TinyChat.Core.Domain.Tests
             Assert.Equal(fakeUserName, message.SenderName);
             Assert.Equal(fakeUserId, message.SenderId);
             Assert.Equal(fakeMessage, message.Text);
-            Assert.Equal(time, message.CreatedDate);
+            var messageTime = message.CreatedDate.ToLongTimeString();
+            
+            Assert.Equal(sendingTime, messageTime);
         }
 
         [Fact]
@@ -81,17 +83,22 @@ namespace TinyChat.Core.Domain.Tests
 
         private IChat GetChatWithDefaultRoom_AndMessages()
         {
-            throw new NotImplementedException();
+            Chat chat = new Chat();
+            chat.CreateRoom("fake", "fake", DEFAULT_ROOM);
+            chat.SendMessage(DEFAULT_ROOM, "fale", "fake", "fake");
+            return chat;
         }
         
         private IChat GetChatWithDefaultRoom()
         {
-            throw new NotImplementedException();
+            Chat chat = new Chat();
+            chat.CreateRoom("fake", "fake", DEFAULT_ROOM);
+            return chat;
         }
         
         private IChat GetEmptyChat()
         {
-            throw new NotImplementedException();
+            return new Chat();
         }
     }
 }

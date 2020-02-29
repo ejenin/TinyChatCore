@@ -8,7 +8,7 @@ namespace TinyChat.Core.Server.Interfaces
         /// <summary>
         /// Создаёт чат и подгружает из кеша (если есть)
         /// </summary>
-        void InitServer();
+        void InitChat();
         
         /// <summary>
         /// Сохраняет состояние в кеш

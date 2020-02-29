@@ -12,3 +12,5 @@
 **/packages/*
 
 obj/Debug/*.txt
+
+src/*/obj/Debug

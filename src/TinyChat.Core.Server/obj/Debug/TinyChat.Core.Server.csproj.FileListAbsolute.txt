@@ -8,3 +8,16 @@
 /Users/mac/RiderProjects/TinyChatCore/src/TinyChat.Core.Server/obj/Debug/TinyChat.Core.Server.csproj.CopyComplete
 /Users/mac/RiderProjects/TinyChatCore/src/TinyChat.Core.Server/obj/Debug/TinyChat.Core.Server.dll
 /Users/mac/RiderProjects/TinyChatCore/src/TinyChat.Core.Server/obj/Debug/TinyChat.Core.Server.pdb
+C:\Users\Eugene\Source\Repos\TinyChatCore\src\TinyChat.Core.Server\bin\Debug\TinyChat.Core.Server.dll
+C:\Users\Eugene\Source\Repos\TinyChatCore\src\TinyChat.Core.Server\bin\Debug\TinyChat.Core.Server.pdb
+C:\Users\Eugene\Source\Repos\TinyChatCore\src\TinyChat.Core.Server\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Eugene\Source\Repos\TinyChatCore\src\TinyChat.Core.Server\bin\Debug\TinyChat.Core.Client.dll
+C:\Users\Eugene\Source\Repos\TinyChatCore\src\TinyChat.Core.Server\bin\Debug\TinyChat.Core.Domain.dll
+C:\Users\Eugene\Source\Repos\TinyChatCore\src\TinyChat.Core.Server\bin\Debug\TinyChat.Core.Client.pdb
+C:\Users\Eugene\Source\Repos\TinyChatCore\src\TinyChat.Core.Server\bin\Debug\TinyChat.Core.Domain.pdb
+C:\Users\Eugene\Source\Repos\TinyChatCore\src\TinyChat.Core.Server\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Eugene\Source\Repos\TinyChatCore\src\TinyChat.Core.Server\obj\Debug\TinyChat.Core.Server.csprojAssemblyReference.cache
+C:\Users\Eugene\Source\Repos\TinyChatCore\src\TinyChat.Core.Server\obj\Debug\TinyChat.Core.Server.csproj.CoreCompileInputs.cache
+C:\Users\Eugene\Source\Repos\TinyChatCore\src\TinyChat.Core.Server\obj\Debug\TinyChat.Core.Server.csproj.CopyComplete
+C:\Users\Eugene\Source\Repos\TinyChatCore\src\TinyChat.Core.Server\obj\Debug\TinyChat.Core.Server.dll
+C:\Users\Eugene\Source\Repos\TinyChatCore\src\TinyChat.Core.Server\obj\Debug\TinyChat.Core.Server.pdb

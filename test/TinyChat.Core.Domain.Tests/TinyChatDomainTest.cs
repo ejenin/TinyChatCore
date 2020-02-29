@@ -7,7 +7,7 @@ namespace TinyChat.Core.Domain.Tests
 {
     public class TinyChatDomainTest
     {
-        private const string DEFAULT_ROOM = "Default";
+        private const string DefaultRoom = "Default";
         
         [Fact]
         public void Chat_Can_Send_Message()
@@ -18,9 +18,9 @@ namespace TinyChat.Core.Domain.Tests
             var fakeMessage = "testMessage";
             var sendingTime = DateTime.Now.ToLongTimeString();
             
-            chat.SendMessage(DEFAULT_ROOM, fakeMessage, fakeUserName, fakeUserId);
+            chat.SendMessage(DefaultRoom, fakeMessage, fakeUserName, fakeUserId);
 
-            var message = chat.GetMessages(DEFAULT_ROOM).FirstOrDefault();
+            var message = chat.GetMessages(DefaultRoom).FirstOrDefault();
             Assert.NotNull(message);
             var messageTime = message.CreatedDate.ToLongTimeString();
             Assert.Equal(fakeUserName, message.SenderName);
@@ -58,7 +58,7 @@ namespace TinyChat.Core.Domain.Tests
         {
             var chat = GetChatWithDefaultRoom_AndMessages();
 
-            var messages = chat.GetMessages(DEFAULT_ROOM);
+            var messages = chat.GetMessages(DefaultRoom);
 
             Assert.NotEmpty(messages);
         }
@@ -83,15 +83,15 @@ namespace TinyChat.Core.Domain.Tests
         private IChat GetChatWithDefaultRoom_AndMessages()
         {
             Chat chat = new Chat();
-            chat.CreateRoom("fake", "fake", DEFAULT_ROOM);
-            chat.SendMessage(DEFAULT_ROOM, "fale", "fake", "fake");
+            chat.CreateRoom("fake", "fake", DefaultRoom);
+            chat.SendMessage(DefaultRoom, "fake", "fake", "fake");
             return chat;
         }
         
         private IChat GetChatWithDefaultRoom()
         {
             Chat chat = new Chat();
-            chat.CreateRoom("fake", "fake", DEFAULT_ROOM);
+            chat.CreateRoom("fake", "fake", DefaultRoom);
             return chat;
         }
         

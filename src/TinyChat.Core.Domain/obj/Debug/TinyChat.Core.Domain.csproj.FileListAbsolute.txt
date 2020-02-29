@@ -1,0 +1,5 @@
+/Users/mac/RiderProjects/TinyChatCore/src/TinyChat.Core.Domain/bin/Debug/TinyChat.Core.Domain.dll
+/Users/mac/RiderProjects/TinyChatCore/src/TinyChat.Core.Domain/bin/Debug/TinyChat.Core.Domain.pdb
+/Users/mac/RiderProjects/TinyChatCore/src/TinyChat.Core.Domain/obj/Debug/TinyChat.Core.Domain.csprojAssemblyReference.cache
+/Users/mac/RiderProjects/TinyChatCore/src/TinyChat.Core.Domain/obj/Debug/TinyChat.Core.Domain.dll
+/Users/mac/RiderProjects/TinyChatCore/src/TinyChat.Core.Domain/obj/Debug/TinyChat.Core.Domain.pdb

@@ -22,11 +22,10 @@ namespace TinyChat.Core.Domain.Tests
 
             var message = chat.GetMessages(DEFAULT_ROOM).FirstOrDefault();
             Assert.NotNull(message);
+            var messageTime = message.CreatedDate.ToLongTimeString();
             Assert.Equal(fakeUserName, message.SenderName);
             Assert.Equal(fakeUserId, message.SenderId);
             Assert.Equal(fakeMessage, message.Text);
-            var messageTime = message.CreatedDate.ToLongTimeString();
-            
             Assert.Equal(sendingTime, messageTime);
         }
 

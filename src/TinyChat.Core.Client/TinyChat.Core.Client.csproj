@@ -38,6 +38,11 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Command\ChatCommand.cs" />
+        <Compile Include="Command\CommandType.cs" />
+        <Compile Include="Command\CreateRoomModel.cs" />
+        <Compile Include="Command\GetMessagesModel.cs" />
+        <Compile Include="Command\SendMessageModel.cs" />
         <Compile Include="Interfaces\IChatClient.cs" />
         <Compile Include="Models\Message.cs" />
         <Compile Include="Models\Room.cs" />

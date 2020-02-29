@@ -7,6 +7,13 @@
       <e p="packages" t="ExcludeRecursive" />
       <e p="src/TinyChat.Core.Client" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Command" t="Include">
+          <e p="ChatCommand.cs" t="Include" />
+          <e p="CommandType.cs" t="Include" />
+          <e p="CreateRoomModel.cs" t="Include" />
+          <e p="GetMessagesModel.cs" t="Include" />
+          <e p="SendMessageModel.cs" t="Include" />
+        </e>
         <e p="Interfaces" t="Include">
           <e p="IChatClient.cs" t="Include" />
         </e>

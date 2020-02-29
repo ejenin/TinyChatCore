@@ -41,6 +41,12 @@
         <Compile Include="Interfaces\IChatServer.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\TinyChat.Core.Client\TinyChat.Core.Client.csproj">
+        <Project>{4ad474da-4963-4234-9f18-c439da261ce3}</Project>
+        <Name>TinyChat.Core.Client</Name>
+      </ProjectReference>
+    </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.

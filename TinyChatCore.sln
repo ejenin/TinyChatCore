@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyChat.Core.Client", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyChat.Core.Server.Tests", "test\TinyChat.Core.Server.Tests\TinyChat.Core.Server.Tests.csproj", "{D0D89E81-94E7-4003-9418-77ACAF9455B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyChat.Core.ClientServer.Tests", "test\TinyChat.Core.ClientServer.Tests\TinyChat.Core.ClientServer.Tests.csproj", "{E53CA68D-DD9C-4A1A-A3DF-B6E358E607D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,9 +40,14 @@ Global
 		{D0D89E81-94E7-4003-9418-77ACAF9455B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0D89E81-94E7-4003-9418-77ACAF9455B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0D89E81-94E7-4003-9418-77ACAF9455B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E53CA68D-DD9C-4A1A-A3DF-B6E358E607D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E53CA68D-DD9C-4A1A-A3DF-B6E358E607D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E53CA68D-DD9C-4A1A-A3DF-B6E358E607D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E53CA68D-DD9C-4A1A-A3DF-B6E358E607D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7688DC94-0B56-450D-890B-72C6C5976415} = {EF1D028D-31A7-4380-915E-6E129D040AC3}
 		{D0D89E81-94E7-4003-9418-77ACAF9455B2} = {EF1D028D-31A7-4380-915E-6E129D040AC3}
+		{E53CA68D-DD9C-4A1A-A3DF-B6E358E607D5} = {EF1D028D-31A7-4380-915E-6E129D040AC3}
 	EndGlobalSection
 EndGlobal

@@ -4,11 +4,12 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{4AD474DA-4963-4234-9F18-C439DA261CE3}</ProjectGuid>
+        <ProjectGuid>{E53CA68D-DD9C-4A1A-A3DF-B6E358E607D5}</ProjectGuid>
+        <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>TinyChat.Core.Client</RootNamespace>
-        <AssemblyName>TinyChat.Core.Client</AssemblyName>
+        <RootNamespace>TinyChat.Core.ClientServer.Tests</RootNamespace>
+        <AssemblyName>TinyChat.Core.ClientServer.Tests</AssemblyName>
         <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
     </PropertyGroup>
@@ -32,29 +33,40 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
-        <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
-          <HintPath>..\..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-          <Private>True</Private>
-        </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
         <Reference Include="System.Xml" />
+        <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c">
+            <HintPath>../..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
+        </Reference>
+        <Reference Include="xunit.assert, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c">
+            <HintPath>../..\packages\xunit.assert.2.1.0\lib\dotnet\xunit.assert.dll</HintPath>
+        </Reference>
+        <Reference Include="xunit.core, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c">
+            <HintPath>../..\packages\xunit.extensibility.core.2.1.0\lib\dotnet\xunit.core.dll</HintPath>
+        </Reference>
+        <Reference Include="xunit.execution.desktop, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c">
+            <HintPath>../..\packages\xunit.extensibility.execution.2.1.0\lib\net45\xunit.execution.desktop.dll</HintPath>
+        </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="ChatClient.cs" />
-        <Compile Include="Command\ChatCommand.cs" />
-        <Compile Include="Command\CommandType.cs" />
-        <Compile Include="Command\CreateRoomModel.cs" />
-        <Compile Include="Command\GetMessagesModel.cs" />
-        <Compile Include="Command\SendMessageModel.cs" />
-        <Compile Include="Interfaces\IChatClient.cs" />
-        <Compile Include="Models\Message.cs" />
-        <Compile Include="Models\Room.cs" />
+        <Compile Include="ClientServerWorkingTest.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>
-      <None Include="packages.config" />
+      <ProjectReference Include="..\..\src\TinyChat.Core.Client\TinyChat.Core.Client.csproj">
+        <Project>{4ad474da-4963-4234-9f18-c439da261ce3}</Project>
+        <Name>TinyChat.Core.Client</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\src\TinyChat.Core.Domain\TinyChat.Core.Domain.csproj">
+        <Project>{674685b3-1ff1-49f5-a685-84bb5fbcf91d}</Project>
+        <Name>TinyChat.Core.Domain</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\src\TinyChat.Core.Server\TinyChat.Core.Server.csproj">
+        <Project>{8ed8761d-7489-4110-b5bd-8246afb63eda}</Project>
+        <Name>TinyChat.Core.Server</Name>
+      </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -64,5 +76,4 @@
     <Target Name="AfterBuild">
     </Target>
     -->
-
 </Project>

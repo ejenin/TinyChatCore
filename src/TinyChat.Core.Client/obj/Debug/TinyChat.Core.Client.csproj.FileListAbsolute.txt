@@ -1,5 +1,4 @@
 /Users/mac/RiderProjects/TinyChatCore/src/TinyChat.Core.Client/bin/Debug/TinyChat.Core.Client.dll
 /Users/mac/RiderProjects/TinyChatCore/src/TinyChat.Core.Client/bin/Debug/TinyChat.Core.Client.pdb
-/Users/mac/RiderProjects/TinyChatCore/src/TinyChat.Core.Client/obj/Debug/TinyChat.Core.Client.csprojAssemblyReference.cache
 /Users/mac/RiderProjects/TinyChatCore/src/TinyChat.Core.Client/obj/Debug/TinyChat.Core.Client.dll
 /Users/mac/RiderProjects/TinyChatCore/src/TinyChat.Core.Client/obj/Debug/TinyChat.Core.Client.pdb

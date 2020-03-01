@@ -4,7 +4,12 @@
     <e p="$USER_HOME$/Library/Caches/Rider2019.3/extResources" t="IncludeRecursive" />
     <e p="$USER_HOME$/Library/Caches/Rider2019.3/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_TinyChatCore.-1823137224.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
-      <e p="packages" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive">
+        <e p="xunit.runner.visualstudio.2.4.1/build/_common/xunit.abstractions.dll" t="Include" />
+        <e p="xunit.runner.visualstudio.2.4.1/build/_common/xunit.runner.reporters.net452.dll" t="Include" />
+        <e p="xunit.runner.visualstudio.2.4.1/build/_common/xunit.runner.utility.net452.dll" t="Include" />
+        <e p="xunit.runner.visualstudio.2.4.1/build/_common/xunit.runner.visualstudio.testadapter.dll" t="Include" />
+      </e>
       <e p="src/TinyChat.Core.Client" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Command" t="Include">
@@ -38,6 +43,7 @@
           <e p="Room.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
@@ -45,10 +51,13 @@
       </e>
       <e p="src/TinyChat.Core.Server" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
+        <e p="ChatServer.cs" t="Include" />
+        <e p="ChatServer.handlers.cs" t="Include" />
         <e p="Interfaces" t="Include">
           <e p="IChatServer.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
@@ -58,6 +67,7 @@
         <e p="TinyChat.Core.Domain.Tests" t="IncludeRecursive">
           <e p="bin" t="ExcludeRecursive" />
           <e p="obj" t="ExcludeRecursive" />
+          <e p="packages.config" t="Include" />
           <e p="Properties" t="Include">
             <e p="AssemblyInfo.cs" t="Include" />
           </e>
@@ -67,6 +77,7 @@
         <e p="TinyChat.Core.Server.Tests" t="IncludeRecursive">
           <e p="bin" t="ExcludeRecursive" />
           <e p="obj" t="ExcludeRecursive" />
+          <e p="packages.config" t="Include" />
           <e p="Properties" t="Include">
             <e p="AssemblyInfo.cs" t="Include" />
           </e>

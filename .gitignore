@@ -14,3 +14,5 @@
 obj/Debug/*.txt
 
 src/*/obj/Debug
+
+*FileListAbsolute.txt

@@ -101,7 +101,7 @@ namespace TinyChat.Core.ClientServer.Tests
         
         private IChatServer GetRunningServer()
         {
-            var server = new ChatServer(ServerPort, ClientPort);
+            var server = new ChatServer(ServerPort);
             server.Start();
             return server;
         }

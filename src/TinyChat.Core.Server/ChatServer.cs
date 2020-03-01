@@ -15,7 +15,6 @@ namespace TinyChat.Core.Server
     internal partial class ChatServer : IChatServer
     {
         private readonly int _serverPort;
-        private readonly int _clientPort;
         private UdpClient _client;
         private IChat _chat;
         public static string CacheName = "chat.json";
@@ -25,12 +24,11 @@ namespace TinyChat.Core.Server
 
         public IChat Chat => _chat;
 
-        public ChatServer(int serverPort, int clientPort)
+        public ChatServer(int serverPort)
         {
             InitChat();
 
             _serverPort = serverPort;
-            _clientPort = clientPort;
         }
 
         public void InitChat()
@@ -94,7 +92,7 @@ namespace TinyChat.Core.Server
                 var message = Encoding.UTF8.GetString(data);
                 var command = JsonConvert.DeserializeObject<ChatCommand>(message);
 
-                command.SenderIdentifier = ip.Address.ToString();
+                command.SenderIdentifier = ip.ToString();
                 
                 HandleCommand(command);
             }

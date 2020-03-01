@@ -110,7 +110,7 @@ namespace TinyChat.Core.Server.Tests
 
         private IChatServer GetDummyChatServer()
         {
-            return new ChatServer(-1);
+            return new ChatServer(-1, -2);
         }
 
         public void Dispose()

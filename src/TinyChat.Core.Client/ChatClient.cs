@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using Newtonsoft.Json;
@@ -55,7 +56,18 @@ namespace TinyChat.Core.Client
 
         public List<Room> GetRooms()
         {
-            throw new System.NotImplementedException();
+            SendServerCommand(new ChatCommand()
+                {
+                    Type = CommandType.GetRooms
+                }
+            );
+
+            IPEndPoint addr = new IPEndPoint(IPAddress.Any, _localPort);
+            var data = _udpClient.Receive(ref addr);
+            var message = Encoding.UTF8.GetString(data);
+
+            var rooms = JsonConvert.DeserializeObject<List<Room>>(message);
+            return rooms;
         }
 
         public List<Message> GetMessages(string roomName)
@@ -65,18 +77,8 @@ namespace TinyChat.Core.Client
 
         private void SendServerCommand(ChatCommand command)
         {
-            switch (command.Type)
-            {
-                case CommandType.CreateRoom:
-                case CommandType.SendMessage:
-                    var json = JsonConvert.SerializeObject(command);
-                    SendJson(json);
-                    break;
-                
-                case CommandType.GetMessages:
-                case CommandType.GetRooms:
-                    throw new NotImplementedException();
-            }
+            var json = JsonConvert.SerializeObject(command);
+            SendJson(json);
         }
 
         private void SendJson(string json)

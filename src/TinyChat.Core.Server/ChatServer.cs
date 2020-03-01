@@ -14,7 +14,8 @@ namespace TinyChat.Core.Server
 {
     internal partial class ChatServer : IChatServer
     {
-        private readonly int _port;
+        private readonly int _serverPort;
+        private readonly int _clientPort;
         private UdpClient _client;
         private IChat _chat;
         public static string CacheName = "chat.json";
@@ -24,11 +25,12 @@ namespace TinyChat.Core.Server
 
         public IChat Chat => _chat;
 
-        public ChatServer(int port)
+        public ChatServer(int serverPort, int clientPort)
         {
             InitChat();
 
-            _port = port;
+            _serverPort = serverPort;
+            _clientPort = clientPort;
         }
 
         public void InitChat()
@@ -68,7 +70,8 @@ namespace TinyChat.Core.Server
                 case CommandType.GetMessages:
                     throw new NotImplementedException();
                 case CommandType.GetRooms:
-                    throw new NotImplementedException();
+                    HandleGetRooms(command);
+                    break;
             }
         }
 
@@ -76,7 +79,7 @@ namespace TinyChat.Core.Server
         
         public void Start()
         {
-            _client = new UdpClient(_port);
+            _client = new UdpClient(_serverPort);
             _serverThread = new Thread(ThreadHandler);
             _serverThread.Start();
         }
@@ -91,7 +94,7 @@ namespace TinyChat.Core.Server
                 var message = Encoding.UTF8.GetString(data);
                 var command = JsonConvert.DeserializeObject<ChatCommand>(message);
 
-                command.SenderIdentifier = ip.ToString();
+                command.SenderIdentifier = ip.Address.ToString();
                 
                 HandleCommand(command);
             }

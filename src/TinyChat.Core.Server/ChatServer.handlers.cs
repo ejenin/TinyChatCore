@@ -1,4 +1,6 @@
-﻿using TinyChat.Core.Client.Command;
+﻿using System.Text;
+using Newtonsoft.Json;
+using TinyChat.Core.Client.Command;
 
 namespace TinyChat.Core.Server
 {
@@ -12,6 +14,15 @@ namespace TinyChat.Core.Server
         private void HandleSendMessage(ChatCommand cmd)
         {
             _chat.SendMessage(cmd.SendMessageModel.RoomName, cmd.SendMessageModel.Text, cmd.SendMessageModel.CreatorName, cmd.SenderIdentifier);
+        }
+
+        private void HandleGetRooms(ChatCommand cmd)
+        {
+            var rooms = _chat.GetRooms();
+
+            var json = JsonConvert.SerializeObject(rooms);
+            byte[] data = Encoding.UTF8.GetBytes(json);
+            _client.Send(data, data.Length, cmd.SenderIdentifier,  _clientPort);
         }
     }
 }

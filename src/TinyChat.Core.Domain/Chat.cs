@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ namespace TinyChat.Core.Domain
 {
     public class Chat : IChat
     {
+        [JsonProperty]
         private List<Room> _rooms;
 
         public Chat()

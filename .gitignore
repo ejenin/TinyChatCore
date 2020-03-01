@@ -1,0 +1,16 @@
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+.vs/
+
+*.pdb
+*.obj
+
+*.csproj.*.txt
+
+**/packages/*
+
+obj/Debug/*.txt
+
+src/*/obj/Debug

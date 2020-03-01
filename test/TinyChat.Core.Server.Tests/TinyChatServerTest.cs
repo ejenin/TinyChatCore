@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Linq;
 using TinyChat.Core.Client.Command;
 using TinyChat.Core.Server.Interfaces;
@@ -6,9 +7,9 @@ using Xunit;
 
 namespace TinyChat.Core.Server.Tests
 {
-    public class TinyChatServerTest
+    public class TinyChatServerTest : IDisposable
     {
-        private const string DefaultRoom = "Default";
+        private static string DefaultRoom = ChatServer.DefaultChannel;
         
         [Fact]
         public void Server_Should_Handle_AddRoom()
@@ -41,7 +42,7 @@ namespace TinyChat.Core.Server.Tests
         [Fact]
         public void Server_Should_Add_Message()
         {
-            var server = GetDummyChatServer_With_Default_Room();
+            var server = GetDummyChatServer();
             
             var fakeMessage = "fakeMessage";
             var fakeCreator = "fakeCreator";
@@ -73,7 +74,7 @@ namespace TinyChat.Core.Server.Tests
         [Fact]
         public void Server_Should_Save_State()
         {
-            var server = GetDummyChatServer_With_Default_Room();
+            var server = GetDummyChatServer();
 
             var fakeMessage = "fakeMessage";
             var fakeCreator = "fakeCreator";
@@ -98,6 +99,8 @@ namespace TinyChat.Core.Server.Tests
             var emptyServer = GetDummyChatServer();
             emptyServer.RestoreState();
 
+            Assert.Single(emptyServer.Chat.GetRooms());
+
             var message = emptyServer.Chat.GetMessages(DefaultRoom).FirstOrDefault();
             Assert.NotNull(message);
             Assert.Equal(fakeMessage, message.Text);
@@ -107,12 +110,15 @@ namespace TinyChat.Core.Server.Tests
 
         private IChatServer GetDummyChatServer()
         {
-            throw new NotImplementedException();
+            return new ChatServer();
         }
-        
-        private IChatServer GetDummyChatServer_With_Default_Room()
+
+        public void Dispose()
         {
-            throw new NotImplementedException();
+            if (File.Exists(ChatServer.CacheName))
+            {
+                File.Delete(ChatServer.CacheName);
+            }
         }
     }
 }

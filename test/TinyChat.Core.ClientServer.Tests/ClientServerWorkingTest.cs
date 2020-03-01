@@ -12,7 +12,6 @@ namespace TinyChat.Core.ClientServer.Tests
 {
     public class ClientServerWorkingTest
     {
-        private const int ClientPort = 8001;
         private const int ServerPort = 8002;
         private const string ServerIp = "127.0.0.1";
         
@@ -96,7 +95,7 @@ namespace TinyChat.Core.ClientServer.Tests
         
         private IChatClient GetChatClient()
         {
-            return new ChatClient(ClientPort, ServerPort, ServerIp);
+            return new ChatClient(ServerPort, ServerIp);
         }
         
         private IChatServer GetRunningServer()

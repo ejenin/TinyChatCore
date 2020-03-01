@@ -15,14 +15,12 @@ namespace TinyChat.Core.Client
         private readonly UdpClient _udpClient;
         private readonly string _serverIp;
         private readonly int _serverPort;
-        private readonly int _localPort;
         
-        public ChatClient(int localPort, int serverPort, string serverIp)
+        public ChatClient(int serverPort, string serverIp)
         {
-            _udpClient = new UdpClient(_localPort);
+            _udpClient = new UdpClient();
             _serverIp = serverIp;
             _serverPort = serverPort;
-            _localPort = localPort;
         }
         
         public void CreateRoom(string roomName, string creatorName)
@@ -62,7 +60,7 @@ namespace TinyChat.Core.Client
                 }
             );
 
-            IPEndPoint addr = new IPEndPoint(IPAddress.Any, _localPort);
+            IPEndPoint addr = null;
             var data = _udpClient.Receive(ref addr);
             var message = Encoding.UTF8.GetString(data);
 
@@ -81,8 +79,8 @@ namespace TinyChat.Core.Client
                     RoomName = roomName
                 }
             });
-            
-            IPEndPoint addr = new IPEndPoint(IPAddress.Any, _localPort);
+
+            IPEndPoint addr = null;
             var data = _udpClient.Receive(ref addr);
             var message = Encoding.UTF8.GetString(data);
 

@@ -14,15 +14,16 @@ namespace TinyChat.Core.Server
 {
     internal partial class ChatServer : IChatServer
     {
-        private readonly int _serverPort;
-        private UdpClient _client;
-        private IChat _chat;
         public static string CacheName = "chat.json";
         public static string DefaultChannel = "Main";
         private const string DefaultUser = "System";
         private const string DefaultId = "System";
 
-        public IChat Chat => _chat;
+        private readonly int _serverPort;
+
+        private UdpClient _client;
+        private Thread _serverThread;
+        private IChat _chat;
 
         public ChatServer(int serverPort)
         {
@@ -30,6 +31,8 @@ namespace TinyChat.Core.Server
 
             _serverPort = serverPort;
         }
+
+        public IChat Chat => _chat;
 
         public void InitChat()
         {
@@ -73,8 +76,6 @@ namespace TinyChat.Core.Server
                     break;
             }
         }
-
-        private Thread _serverThread;
         
         public void Start()
         {

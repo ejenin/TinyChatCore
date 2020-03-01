@@ -60,10 +60,7 @@ namespace TinyChat.Core.Client
                 }
             );
 
-            IPEndPoint addr = null;
-            var data = _udpClient.Receive(ref addr);
-            var message = Encoding.UTF8.GetString(data);
-
+            var message = ReceiveJson();
             var rooms = JsonConvert.DeserializeObject<List<Room>>(message);
             return rooms;
         }
@@ -79,13 +76,20 @@ namespace TinyChat.Core.Client
                     RoomName = roomName
                 }
             });
+            
+            var message = ReceiveJson();
+            var messages = JsonConvert.DeserializeObject<List<Message>>(message);
+            return messages;
+        }
 
+        //blocking thread until receiving data!
+        private string ReceiveJson()
+        {
             IPEndPoint addr = null;
             var data = _udpClient.Receive(ref addr);
             var message = Encoding.UTF8.GetString(data);
 
-            var messages = JsonConvert.DeserializeObject<List<Message>>(message);
-            return messages;
+            return message;
         }
 
         private void SendServerCommand(ChatCommand command)

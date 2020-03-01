@@ -29,5 +29,18 @@ namespace TinyChat.Core.Server
             
             _client.Send(data, data.Length, ip,  port);
         }
+
+        private void HandleGetMessages(ChatCommand cmd)
+        {
+            var messages = _chat.GetMessages(cmd.GetMessagesModel.RoomName);
+
+            var json = JsonConvert.SerializeObject(messages);
+            byte[] data = Encoding.UTF8.GetBytes(json);
+
+            var ip = cmd.SenderIdentifier.Split(':')[0];
+            var port = Convert.ToInt32(cmd.SenderIdentifier.Split(':')[1]);
+
+            _client.Send(data, data.Length, ip, port);
+        }
     }
 }

@@ -66,7 +66,8 @@ namespace TinyChat.Core.Server
                     HandleSendMessage(command);
                     break;
                 case CommandType.GetMessages:
-                    throw new NotImplementedException();
+                    HandleGetMessages(command);
+                    break;
                 case CommandType.GetRooms:
                     HandleGetRooms(command);
                     break;

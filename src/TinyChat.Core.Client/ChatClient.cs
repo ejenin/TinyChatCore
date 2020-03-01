@@ -72,7 +72,22 @@ namespace TinyChat.Core.Client
 
         public List<Message> GetMessages(string roomName)
         {
-            throw new System.NotImplementedException();
+            SendServerCommand(new ChatCommand()
+            {
+                Type = CommandType.GetMessages,
+                
+                GetMessagesModel = new GetMessagesModel()
+                {
+                    RoomName = roomName
+                }
+            });
+            
+            IPEndPoint addr = new IPEndPoint(IPAddress.Any, _localPort);
+            var data = _udpClient.Receive(ref addr);
+            var message = Encoding.UTF8.GetString(data);
+
+            var messages = JsonConvert.DeserializeObject<List<Message>>(message);
+            return messages;
         }
 
         private void SendServerCommand(ChatCommand command)

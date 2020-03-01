@@ -1,6 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.IO;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading;
 using TinyChat.Core.Client.Command;
 using TinyChat.Core.Domain;
 using TinyChat.Core.Domain.Interfaces;
@@ -10,6 +14,8 @@ namespace TinyChat.Core.Server
 {
     internal partial class ChatServer : IChatServer
     {
+        private readonly int _port;
+        private UdpClient _client;
         private IChat _chat;
         public static string CacheName = "chat.json";
         public static string DefaultChannel = "Main";
@@ -18,9 +24,11 @@ namespace TinyChat.Core.Server
 
         public IChat Chat => _chat;
 
-        public ChatServer()
+        public ChatServer(int port)
         {
             InitChat();
+
+            _port = port;
         }
 
         public void InitChat()
@@ -64,14 +72,36 @@ namespace TinyChat.Core.Server
             }
         }
 
+        private Thread _serverThread;
+        
         public void Start()
         {
-            throw new System.NotImplementedException();
+            _client = new UdpClient(_port);
+            _serverThread = new Thread(ThreadHandler);
+            _serverThread.Start();
+        }
+
+        private void ThreadHandler()
+        {
+            while (true)
+            {
+                IPEndPoint ip = null;
+                
+                var data = _client.Receive(ref ip);
+                var message = Encoding.UTF8.GetString(data);
+                var command = JsonConvert.DeserializeObject<ChatCommand>(message);
+
+                command.SenderIdentifier = ip.ToString();
+                
+                HandleCommand(command);
+            }
         }
 
         public void Stop()
         {
-            throw new System.NotImplementedException();
+            _client.Close();
+            _client.Dispose();
+            _serverThread.Abort();
         }
     }
 }

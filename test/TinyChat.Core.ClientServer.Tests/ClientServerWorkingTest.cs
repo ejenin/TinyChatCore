@@ -92,7 +92,51 @@ namespace TinyChat.Core.ClientServer.Tests
             
             Assert.NotEmpty(messages);
         }
-        
+
+        [Fact, Order(4)]
+        public void Server_Should_Respond_To_Multiple_Client_Requests()
+        {
+            var server = GetRunningServer();
+            var client = GetChatClient();
+
+            var rooms = client.GetRooms();
+            rooms = client.GetRooms();
+            rooms = client.GetRooms();
+            rooms = client.GetRooms();
+            rooms = client.GetRooms();
+            rooms = client.GetRooms();
+            rooms = client.GetRooms();
+
+            server.Stop();
+        }
+
+        [Fact, Order(5)]
+        public void Server_Should_Respond_To_Multiple_Clients()
+        {
+            var server = GetRunningServer();
+
+            for (int i = 0; i < 15; i++)
+            {
+                var thread = new Thread(() =>
+                {
+                    var guid = Guid.NewGuid();
+                    var client = GetChatClient();
+                    var rooms = client.GetRooms();
+
+                    client.SendMessage(rooms.First().Name, $"Thread {guid}", $"Hello from thread {guid}!");
+                    var messages = client.GetMessages(rooms.First().Name);
+
+                    Assert.NotEmpty(messages);
+                });
+
+                thread.Start();
+            }
+
+            Thread.Sleep(5000);
+            
+            server.Stop();
+        }
+
         private IChatClient GetChatClient()
         {
             return new ChatClient(ServerPort, ServerIp);

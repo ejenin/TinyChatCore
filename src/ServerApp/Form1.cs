@@ -50,13 +50,28 @@ namespace ServerApp
             roomsListBox.Items.AddRange(rooms.Select(r => r.Name).ToArray());
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (roomsListBox.SelectedItem != null)
-            {
-                var selectedRoom = roomsListBox.SelectedItem.ToString();
+        private string Room => roomsListBox.SelectedItem?.ToString();
 
-                var messages = _chatServer.Chat.GetMessages(selectedRoom);
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            var rooms = _chatServer.Chat.GetRooms();
+
+            var index = -1;
+            if (!string.IsNullOrEmpty(Room))
+            {
+                index = roomsListBox.SelectedIndex;
+            }
+
+            roomsListBox.Items.Clear();
+            roomsListBox.Items.AddRange(rooms.Select(r => r.Name).ToArray());
+
+            roomsListBox.SelectedIndex = index;
+
+            if (!string.IsNullOrEmpty(Room))
+            {
+                var messages = _chatServer.Chat.GetMessages(Room);
+
+                chatRichTextBox.Clear();
 
                 chatRichTextBox.Clear();
 

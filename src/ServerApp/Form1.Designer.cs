@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.startButton = new System.Windows.Forms.Button();
             this.stopButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.roomsListBox = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.chatRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.refreshRooms = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.saveChatButton = new System.Windows.Forms.Button();
             this.restoreChatButton = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // startButton
@@ -94,26 +94,6 @@
             this.chatRichTextBox.TabIndex = 5;
             this.chatRichTextBox.Text = "";
             // 
-            // refreshRooms
-            // 
-            this.refreshRooms.Location = new System.Drawing.Point(15, 406);
-            this.refreshRooms.Name = "refreshRooms";
-            this.refreshRooms.Size = new System.Drawing.Size(155, 23);
-            this.refreshRooms.TabIndex = 6;
-            this.refreshRooms.Text = "Refresh";
-            this.refreshRooms.UseVisualStyleBackColor = true;
-            this.refreshRooms.Click += new System.EventHandler(this.refreshRooms_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(190, 405);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(579, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Refresh";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // saveChatButton
             // 
             this.saveChatButton.Location = new System.Drawing.Point(95, 13);
@@ -134,15 +114,19 @@
             this.restoreChatButton.UseVisualStyleBackColor = true;
             this.restoreChatButton.Click += new System.EventHandler(this.restoreChatButton_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 500;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(786, 442);
+            this.ClientSize = new System.Drawing.Size(786, 414);
             this.Controls.Add(this.restoreChatButton);
             this.Controls.Add(this.saveChatButton);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.refreshRooms);
             this.Controls.Add(this.chatRichTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.roomsListBox);
@@ -164,10 +148,9 @@
         private System.Windows.Forms.ListBox roomsListBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RichTextBox chatRichTextBox;
-        private System.Windows.Forms.Button refreshRooms;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button saveChatButton;
         private System.Windows.Forms.Button restoreChatButton;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

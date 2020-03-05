@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 using TinyChat.Core.Client.Command;
+using TinyChat.Core.Client.Models;
 
 namespace TinyChat.Core.Server
 {
@@ -32,7 +34,14 @@ namespace TinyChat.Core.Server
 
         private void HandleGetMessages(ChatCommand cmd)
         {
-            var messages = _chat.GetMessages(cmd.GetMessagesModel.RoomName);
+            var messages = _chat
+                .GetMessages(cmd.GetMessagesModel.RoomName)
+                .Select(t => new Message()
+                {
+                    Sender = t.SenderName,
+                    Text = t.Text,
+                    Time = t.CreatedDate.ToLongTimeString()
+                }).ToList();
 
             var json = JsonConvert.SerializeObject(messages);
             byte[] data = Encoding.UTF8.GetBytes(json);

@@ -24,6 +24,7 @@ namespace TinyChat.Core.Server
         private UdpClient _client;
         private Thread _serverThread;
         private IChat _chat;
+        private bool _serverRunning;
 
         public ChatServer(int serverPort)
         {
@@ -79,6 +80,7 @@ namespace TinyChat.Core.Server
         
         public void Start()
         {
+            _serverRunning = true;
             _client = new UdpClient(_serverPort);
             _serverThread = new Thread(ThreadHandler);
             _serverThread.Start();
@@ -86,22 +88,30 @@ namespace TinyChat.Core.Server
 
         private void ThreadHandler()
         {
-            while (true)
+            while (_serverRunning)
             {
-                IPEndPoint ip = null;
-                
-                var data = _client.Receive(ref ip);
-                var message = Encoding.UTF8.GetString(data);
-                var command = JsonConvert.DeserializeObject<ChatCommand>(message);
+                try
+                {
+                    IPEndPoint ip = null;
 
-                command.SenderIdentifier = ip.ToString();
-                
-                HandleCommand(command);
+                    var data = _client.Receive(ref ip);
+                    var message = Encoding.UTF8.GetString(data);
+                    var command = JsonConvert.DeserializeObject<ChatCommand>(message);
+
+                    command.SenderIdentifier = ip.ToString();
+
+                    HandleCommand(command);
+                }
+                catch (Exception)
+                {
+                    //todo: log
+                }
             }
         }
 
         public void Stop()
         {
+            _serverRunning = false;
             _client.Close();
             _client.Dispose();
             _serverThread.Abort();

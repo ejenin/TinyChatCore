@@ -73,8 +73,6 @@ namespace ServerApp
 
                 chatRichTextBox.Clear();
 
-                chatRichTextBox.Clear();
-
                 var messagesText = string.Join(Environment.NewLine, messages
                     .Select(t => $"{t.CreatedDate.ToShortTimeString()} [{t.SenderId} - {t.SenderName}]]: {t.Text})")
                     .ToArray());
